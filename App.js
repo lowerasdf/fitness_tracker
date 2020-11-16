@@ -75,7 +75,7 @@ class App extends React.Component {
   SignoutButton = () => {
     return <>
       <View style={{ flexDirection: 'row', marginRight: 25, paddingLeft: 10 }}>
-        <TouchableOpacity onPress={() => this.logoutConfirmation()}>
+        <TouchableOpacity onPress={() => this.logoutConfirmation()} accessibilityLabel="Logout" accessibilityHint="double tap to logout" accessibilityRole="button">
           <Icon
             name='ios-log-out'
             type='ionicon'
@@ -138,7 +138,7 @@ class App extends React.Component {
                 <AuthStack.Screen name="FitnessTracker" options={{
                   headerLeft: this.SignoutButton
                 }}>
-                  {(props) => <AfterLoginView {...props} username={this.state.username} accessToken={this.state.accessToken} revokeAccessToken={this.revokeAccessToken} />}
+                  {(props) => <AfterLoginView {...props} username={this.state.username} accessToken={this.state.accessToken} revokeAccessToken={this.revokeAccessToken} logoutConfirmation={this.logoutConfirmation} />}
                 </AuthStack.Screen>
               </>
 

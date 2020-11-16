@@ -7,7 +7,7 @@ import ProfileView from './ProfileView';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { StyleSheet, Alert } from 'react-native';
+import { StyleSheet, Alert, View } from 'react-native';
 import { Icon } from 'react-native-elements';
 
 class AfterLoginView extends React.Component {
@@ -134,39 +134,26 @@ class AfterLoginView extends React.Component {
         })
             .then(res => res.json())
             .then(res => {
-                if (res.message === "Token is invalid!") {
-                    Alert.alert(
-                        "Request Timeout",
-                        "Please re-login to continue.",
-                        [
-                            {
-                                text: "OK", onPress: () => this.props.revokeAccessToken()
-                            }
-                        ],
-                        { cancelable: false }
-                    );
-                } else {
-                    let ls = [];
-                    let list = res["activities"];
-                    let today = new Date();
-                    let updatedMins = 0.0;
-                    let updatedCals = 0.0;
-                    for (let i = 0; i < list.length; i++) {
-                        let activityDate = new Date(list[i]["date"]);
-                        if (today.getFullYear() === activityDate.getFullYear() &&
-                            today.getMonth() === activityDate.getMonth() &&
-                            today.getDate() === activityDate.getDate()) {
-                            ls.push(list[i]);
-                            updatedMins += list[i]["duration"];
-                            updatedCals += list[i]["calories"];
-                        }
+                let ls = [];
+                let list = res["activities"];
+                let today = new Date();
+                let updatedMins = 0.0;
+                let updatedCals = 0.0;
+                for (let i = 0; i < list.length; i++) {
+                    let activityDate = new Date(list[i]["date"]);
+                    if (today.getFullYear() === activityDate.getFullYear() &&
+                        today.getMonth() === activityDate.getMonth() &&
+                        today.getDate() === activityDate.getDate()) {
+                        ls.push(list[i]);
+                        updatedMins += list[i]["duration"];
+                        updatedCals += list[i]["calories"];
                     }
-                    this.setState({
-                        todayActivityList: ls,
-                        totalMins: updatedMins,
-                        totalCalsBurned: updatedCals,
-                    })
                 }
+                this.setState({
+                    todayActivityList: ls,
+                    totalMins: updatedMins,
+                    totalCalsBurned: updatedCals,
+                })
             });
 
         let tempCals = 0.0;
@@ -179,90 +166,77 @@ class AfterLoginView extends React.Component {
         })
             .then(res => res.json())
             .then(res => {
-                if (res.message === "Token is invalid!") {
-                    Alert.alert(
-                        "Request Timeout",
-                        "Please re-login to continue.",
-                        [
-                            {
-                                text: "OK", onPress: () => this.props.revokeAccessToken()
-                            }
-                        ],
-                        { cancelable: false }
-                    );
-                } else {
-                    let ls = [];
-                    let list = res["meals"];
-                    let today = new Date();
-                    for (let i = 0; i < list.length; i++) {
-                        let activityDate = new Date(list[i]["date"]);
-                        if (today.getFullYear() === activityDate.getFullYear() &&
-                            today.getMonth() === activityDate.getMonth() &&
-                            today.getDate() === activityDate.getDate()) {
-                            ls.push(list[i])
-                        }
+                let ls = [];
+                let list = res["meals"];
+                let today = new Date();
+                for (let i = 0; i < list.length; i++) {
+                    let activityDate = new Date(list[i]["date"]);
+                    if (today.getFullYear() === activityDate.getFullYear() &&
+                        today.getMonth() === activityDate.getMonth() &&
+                        today.getDate() === activityDate.getDate()) {
+                        ls.push(list[i])
                     }
-                    this.setState({
-                        todayMealList: ls,
-                    });
-
-                    let tempMealList = ls;
-                    let urls = [];
-                    for (let i = 0; i < tempMealList.length; i++) {
-                        tempMealList[i]["foods"] = [];
-                        tempMealList[i]["cals"] = 0.0;
-                        tempMealList[i]["carbs"] = 0.0;
-                        tempMealList[i]["protein"] = 0.0;
-                        tempMealList[i]["fat"] = 0.0;
-                        urls.push('https://mysqlcs639.cs.wisc.edu/meals/' + tempMealList[i]["id"] + "/foods/")
-                    }
-                    Promise.all(urls.map(url => fetch(url, {
-                        method: 'GET',
-                        headers: { 'x-access-token': this.props.accessToken }
-                    }).then(async res => {
-                        let json = await res.json();
-                        json["id"] = parseInt(res.url.split("/").slice(-3, -2)[0]);
-                        return json;
-                    })
-                    )).then((res) => {
-                        for (let i = 0; i < res.length; i++) {
-                            for (let j = 0; j < tempMealList.length; j++) {
-                                if (res[i]["id"] === tempMealList[j]["id"]) {
-                                    tempMealList[j]["foods"] = res[i]["foods"];
-                                    let cals = 0.0;
-                                    let carbs = 0.0;
-                                    let proteins = 0.0;
-                                    let fats = 0.0;
-                                    for (let k = 0; k < res[i]["foods"].length; k++) {
-                                        cals += res[i]["foods"][k]["calories"];
-                                        carbs += res[i]["foods"][k]["carbohydrates"];
-                                        proteins += res[i]["foods"][k]["protein"];
-                                        fats += res[i]["foods"][k]["fat"];
-                                    }
-                                    tempMealList[j]["cals"] = cals;
-                                    tempMealList[j]["carbs"] = carbs;
-                                    tempMealList[j]["protein"] = proteins;
-                                    tempMealList[j]["fat"] = fats;
-                                    tempCals += cals;
-                                    tempCarbs += carbs;
-                                    tempProtein += proteins;
-                                    tempFat += fats;
-                                    break;
-                                }
-                            }
-                        }
-                        return tempMealList
-                    })
-                        .then(tempMealList => {
-                            this.setState({
-                                todayMealList: tempMealList,
-                                totalCals: tempCals,
-                                totalCarbs: tempCarbs,
-                                totalProtein: tempProtein,
-                                totalFat: tempFat,
-                            });
-                        });
                 }
+                this.setState({
+                    todayMealList: ls,
+                });
+
+                let tempMealList = ls;
+                let urls = [];
+                for (let i = 0; i < tempMealList.length; i++) {
+                    tempMealList[i]["foods"] = [];
+                    tempMealList[i]["cals"] = 0.0;
+                    tempMealList[i]["carbs"] = 0.0;
+                    tempMealList[i]["protein"] = 0.0;
+                    tempMealList[i]["fat"] = 0.0;
+                    urls.push('https://mysqlcs639.cs.wisc.edu/meals/' + tempMealList[i]["id"] + "/foods/")
+                }
+                Promise.all(urls.map(url => fetch(url, {
+                    method: 'GET',
+                    headers: { 'x-access-token': this.props.accessToken }
+                }).then(async res => {
+                    let json = await res.json();
+                    json["id"] = parseInt(res.url.split("/").slice(-3, -2)[0]);
+                    return json;
+                })
+                )).then((res) => {
+                    for (let i = 0; i < res.length; i++) {
+                        for (let j = 0; j < tempMealList.length; j++) {
+                            if (res[i]["id"] === tempMealList[j]["id"]) {
+                                tempMealList[j]["foods"] = res[i]["foods"];
+                                let cals = 0.0;
+                                let carbs = 0.0;
+                                let proteins = 0.0;
+                                let fats = 0.0;
+                                for (let k = 0; k < res[i]["foods"].length; k++) {
+                                    cals += res[i]["foods"][k]["calories"];
+                                    carbs += res[i]["foods"][k]["carbohydrates"];
+                                    proteins += res[i]["foods"][k]["protein"];
+                                    fats += res[i]["foods"][k]["fat"];
+                                }
+                                tempMealList[j]["cals"] = cals;
+                                tempMealList[j]["carbs"] = carbs;
+                                tempMealList[j]["protein"] = proteins;
+                                tempMealList[j]["fat"] = fats;
+                                tempCals += cals;
+                                tempCarbs += carbs;
+                                tempProtein += proteins;
+                                tempFat += fats;
+                                break;
+                            }
+                        }
+                    }
+                    return tempMealList
+                })
+                    .then(tempMealList => {
+                        this.setState({
+                            todayMealList: tempMealList,
+                            totalCals: tempCals,
+                            totalCarbs: tempCarbs,
+                            totalProtein: tempProtein,
+                            totalFat: tempFat,
+                        });
+                    });
             })
     }
 
@@ -314,6 +288,7 @@ class AfterLoginView extends React.Component {
                             goalDailyProtein={this.state.goalDailyProtein}
                             goalDailyFat={this.state.goalDailyFat}
                             totalCalsBurned={this.state.totalCalsBurned}
+                            logoutConfirmation={this.props.logoutConfirmation}
                         />}
                     </BottomTab.Screen>
                     <BottomTab.Screen
@@ -337,7 +312,7 @@ class AfterLoginView extends React.Component {
                             }
                         }}
                     >
-                        {(props) => <ExercisesView {...props} username={this.props.username} accessToken={this.props.accessToken} revokeAccessToken={this.props.revokeAccessToken} updateActivityList={this.updateActivityList} />}
+                        {(props) => <ExercisesView {...props} username={this.props.username} accessToken={this.props.accessToken} revokeAccessToken={this.props.revokeAccessToken} updateActivityList={this.updateActivityList} logoutConfirmation={this.props.logoutConfirmation}/>}
                     </BottomTab.Screen>
                     <BottomTab.Screen
                         name="Meals"
@@ -360,7 +335,7 @@ class AfterLoginView extends React.Component {
                             }
                         }}
                     >
-                        {(props) => <MealsView {...props} username={this.props.username} accessToken={this.props.accessToken} revokeAccessToken={this.props.revokeAccessToken} updateMealList={this.updateMealList} />}
+                        {(props) => <MealsView {...props} username={this.props.username} accessToken={this.props.accessToken} revokeAccessToken={this.props.revokeAccessToken} updateMealList={this.updateMealList} logoutConfirmation={this.props.logoutConfirmation}/>}
                     </BottomTab.Screen>
                     <BottomTab.Screen
                         name="Profile"
@@ -383,7 +358,7 @@ class AfterLoginView extends React.Component {
                             }
                         }}
                     >
-                        {(props) => <ProfileView {...props} username={this.props.username} accessToken={this.props.accessToken} revokeAccessToken={this.props.revokeAccessToken} changeGoal={this.changeGoal} />}
+                        {(props) => <ProfileView {...props} username={this.props.username} accessToken={this.props.accessToken} revokeAccessToken={this.props.revokeAccessToken} changeGoal={this.changeGoal} logoutConfirmation={this.props.logoutConfirmation}/>}
                     </BottomTab.Screen>
                 </>
             </BottomTab.Navigator>

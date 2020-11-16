@@ -52,6 +52,9 @@ class MealsView extends React.Component {
             .then(res => res.json())
             .then(res => {
                 let tempMealList = res["meals"];
+                if(tempMealList === undefined) {
+                    tempMealList = [];
+                }
                 let urls = [];
                 for (let i = 0; i < tempMealList.length; i++) {
                     tempMealList[i]["foods"] = [];
