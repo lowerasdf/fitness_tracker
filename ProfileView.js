@@ -112,6 +112,10 @@ class ProfileView extends React.Component {
       AccessibilityInfo.setAccessibilityFocus(reactTag);
       AccessibilityInfo.setAccessibilityFocus(reactTag);
       AccessibilityInfo.setAccessibilityFocus(reactTag);
+      AccessibilityInfo.setAccessibilityFocus(reactTag);
+      AccessibilityInfo.setAccessibilityFocus(reactTag);
+      AccessibilityInfo.setAccessibilityFocus(reactTag);
+      AccessibilityInfo.setAccessibilityFocus(reactTag);
     }
     this.tabSub = this.props.navigation.addListener('tabPress', async e => {
       AccessibilityInfo.setAccessibilityFocus(findNodeHandle(this.startFocus.current));
@@ -160,6 +164,7 @@ class ProfileView extends React.Component {
             accessible={true}
             accessibilityLabel="You’re at the Profile View. Let's get to know you!"
             accessibilityHint="specify your information below. To jump over to Today's view, double tap with two fingers. To logout, make a two finger Z shaped gesture."
+            accessibilityRole="text"
             accessibilityActions={[
               { name: 'magicTap', label: 'magicTap' },
               { name: 'escape', label: 'escape' }

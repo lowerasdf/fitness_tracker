@@ -25,6 +25,8 @@ class LoginView extends React.Component {
     this.onFocusHint = "Swipe right to access the keyboard. Once you’re done, you can make a two finger Z shaped gesture to exit the edit mode. To start or end dictation, double tap using two fingers";
     this._keyboardDidShow = this._keyboardDidShow.bind(this);
     this.escapeGestureHandler = this.escapeGestureHandler.bind(this);
+    this.tabSub = null;
+    this.moveSub = null;
   }
 
   _keyboardDidHide() {
@@ -49,11 +51,19 @@ class LoginView extends React.Component {
     AccessibilityInfo.setAccessibilityFocus(findNodeHandle(this.startFocus.current));
     this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
     this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
+    this.tabSub = this.props.navigation.addListener('tabPress', async e => {
+      AccessibilityInfo.setAccessibilityFocus(findNodeHandle(this.startFocus.current));
+    })
+    this.moveSub = this.props.navigation.addListener('focus', async e => {
+      AccessibilityInfo.setAccessibilityFocus(findNodeHandle(this.startFocus.current));
+    })
   }
 
   componentWillUnmount() {
     this.keyboardDidHideListener.remove();
     this.keyboardDidShowListener.remove();
+    this.tabSub();
+    this.moveSub();
   }
 
   escapeGestureHandler() {

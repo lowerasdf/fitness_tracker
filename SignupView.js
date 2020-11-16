@@ -11,7 +11,7 @@ class SignupView extends React.Component {
       accessibilityModalUsername: false,
       accessibilityModalPassword: false,
       formHint: "Please provide at least 5 characters",
-      showingKeyboard: false
+      showingKeyboard: false,
     }
 
     this.handleCreateAccount = this.handleCreateAccount.bind(this);
@@ -24,6 +24,8 @@ class SignupView extends React.Component {
     this.onFocusHint = "Swipe right to access the keyboard. Once you’re done, you can make a two finger Z shaped gesture to exit the edit mode. To start or end dictation, double tap using two fingers";
     this._keyboardDidShow = this._keyboardDidShow.bind(this);
     this.escapeGestureHandler = this.escapeGestureHandler.bind(this);
+    this.tabSub = null;
+    this.moveSub = null;
   }
 
   _keyboardDidHide() {
@@ -48,11 +50,19 @@ class SignupView extends React.Component {
     AccessibilityInfo.setAccessibilityFocus(findNodeHandle(this.startFocus.current));
     this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
     this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
+    this.tabSub = this.props.navigation.addListener('tabPress', async e => {
+      AccessibilityInfo.setAccessibilityFocus(findNodeHandle(this.startFocus.current));
+    })
+    this.moveSub = this.props.navigation.addListener('focus', async e => {
+      AccessibilityInfo.setAccessibilityFocus(findNodeHandle(this.startFocus.current));
+    })
   }
 
   componentWillUnmount() {
     this.keyboardDidHideListener.remove();
     this.keyboardDidShowListener.remove();
+    this.tabSub();
+    this.moveSub();
   }
 
   escapeGestureHandler() {
@@ -87,7 +97,16 @@ class SignupView extends React.Component {
       .then(res => res.json())
       .then(res => {
         if (res.message === "User created!") {
-          alert(JSON.stringify(res.message));
+          Alert.alert(
+            'User Created',
+            'Press Ok button below to continue.',
+            [
+              {
+                text: 'Ok'
+              }
+            ],
+            { cancelable: false }
+          );
           this.props.navigation.navigate("SignIn");
         } else {
           let msg = JSON.stringify(res.message).slice(1, -1);
@@ -96,14 +115,10 @@ class SignupView extends React.Component {
             msg + ' Please try again after clicking Ok button below.',
             [
               {
-                text: 'Ok', onPress:() => {
-                  if(msg === "Field password must be 5 characters or longer.") {
-                    AccessibilityInfo.setAccessibilityFocus(findNodeHandle(this.passwordFocus.current));
-                  } else {
-                    let reactTag = findNodeHandle(this.usernameFocus.current);
-                    if(reactTag){
-                      AccessibilityInfo.setAccessibilityFocus(reactTag);
-                    }
+                text: 'Ok', onPress: () => {
+                  let reactTag = findNodeHandle(this.usernameFocus.current);
+                  if (reactTag) {
+                    AccessibilityInfo.setAccessibilityFocus(reactTag);
                   }
                 }
               }
