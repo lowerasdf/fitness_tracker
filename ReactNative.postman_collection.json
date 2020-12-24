@@ -1,0 +1,918 @@
+{
+	"info": {
+		"_postman_id": "8da80791-aa1e-4488-ac54-76082defe425",
+		"name": "ReactNative",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "base64enc(username:password)",
+								"key": "Authorization",
+								"type": "text",
+								"value": "Basic Y3RuZWxzb25fdGVzdDpwYXNzd29yZA=="
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://mysqlcs639.cs.wisc.edu/login",
+							"protocol": "https",
+							"host": [
+								"mysqlcs639",
+								"cs",
+								"wisc",
+								"edu"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"user533\",\r\n    \"password\":\"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://mysqlcs639.cs.wisc.edu/users",
+							"protocol": "https",
+							"host": [
+								"mysqlcs639",
+								"cs",
+								"wisc",
+								"edu"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SignupExtended",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"usr132\",\r\n    \"password\":\"dsfd21\",\r\n    \"goalDailyCalories\":2500,\r\n    \"goalDailyProtein\":80,\r\n    \"goalDailyCarbohydrates\": 60,\r\n    \"goalDailyFat\":50,\r\n    \"goalDailyActivity\":90\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://mysqlcs639.cs.wisc.edu/users",
+							"protocol": "https",
+							"host": [
+								"mysqlcs639",
+								"cs",
+								"wisc",
+								"edu"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "GetUserProfile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImN0bmVsc29uX3Rlc3QiLCJleHAiOjE2MDQ2MzEzOTh9.UeeW-Q3U5Q1vmkxPqnmak_hHbcgJNWuKPFfZVa7c6VA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://mysqlcs639.cs.wisc.edu/users/:username",
+							"protocol": "https",
+							"host": [
+								"mysqlcs639",
+								"cs",
+								"wisc",
+								"edu"
+							],
+							"path": [
+								"users",
+								":username"
+							],
+							"variable": [
+								{
+									"key": "username",
+									"value": "ctnelson_test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateUserProfile_Name",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImN0bmVsc29uX3Rlc3QiLCJleHAiOjE2MDQ2MTU0NzJ9.QtEQ0UFIp6G25cbEVAIIqWkUTp6MQ8RHVR-XGhQeexc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\":\"Cole\",\r\n    \"lastName\":\"Nelson\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://mysqlcs639.cs.wisc.edu/users/:username",
+							"protocol": "https",
+							"host": [
+								"mysqlcs639",
+								"cs",
+								"wisc",
+								"edu"
+							],
+							"path": [
+								"users",
+								":username"
+							],
+							"variable": [
+								{
+									"key": "username",
+									"value": "ctnelson_test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateUserProfile_Goals",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"type": "text",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImN0bmVsc29uX3Rlc3QiLCJleHAiOjE2MDQ2MTU0NzJ9.QtEQ0UFIp6G25cbEVAIIqWkUTp6MQ8RHVR-XGhQeexc"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"goalDailyCalories\":2200,\r\n    \"goalDailyProtein\":120,\r\n    \"goalDailyCarbohydrates\":20,\r\n    \"goalDailyFat\":60,\r\n    \"goalDailyActivity\":90\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://mysqlcs639.cs.wisc.edu/users/:username",
+							"protocol": "https",
+							"host": [
+								"mysqlcs639",
+								"cs",
+								"wisc",
+								"edu"
+							],
+							"path": [
+								"users",
+								":username"
+							],
+							"variable": [
+								{
+									"key": "username",
+									"value": "ctnelson_test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateUserProfile_NameAndGoals",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImN0bmVsc29uX3Rlc3QiLCJleHAiOjE2MDQ2MzEzOTh9.UeeW-Q3U5Q1vmkxPqnmak_hHbcgJNWuKPFfZVa7c6VA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\":\"Cole\",\r\n    \"lastName\":\"Nelson\",\r\n    \"goalDailyCalories\":3000,\r\n    \"goalDailyProtein\":120,\r\n    \"goalDailyCarbohydrates\":20,\r\n    \"goalDailyFat\":60,\r\n    \"goalDailyActivity\":90\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://mysqlcs639.cs.wisc.edu/users/:username",
+							"protocol": "https",
+							"host": [
+								"mysqlcs639",
+								"cs",
+								"wisc",
+								"edu"
+							],
+							"path": [
+								"users",
+								":username"
+							],
+							"variable": [
+								{
+									"key": "username",
+									"value": "ctnelson_test"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Exercise",
+			"item": [
+				{
+					"name": "GetUserAllExercises",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImN0bmVsc29uX3Rlc3QiLCJleHAiOjE2MDQ2MzEzOTh9.UeeW-Q3U5Q1vmkxPqnmak_hHbcgJNWuKPFfZVa7c6VA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://mysqlcs639.cs.wisc.edu/activities",
+							"protocol": "https",
+							"host": [
+								"mysqlcs639",
+								"cs",
+								"wisc",
+								"edu"
+							],
+							"path": [
+								"activities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddUserExercise",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImN0bmVsc29uX3Rlc3QiLCJleHAiOjE2MDQ2MzEzOTh9.UeeW-Q3U5Q1vmkxPqnmak_hHbcgJNWuKPFfZVa7c6VA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Swimming on Mononoa\",\r\n    \"duration\": 30.0,\r\n    \"calories\": 400.0,\r\n    \"date\": \"2020-11-01T03:04:57.153Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://mysqlcs639.cs.wisc.edu/activities/",
+							"protocol": "https",
+							"host": [
+								"mysqlcs639",
+								"cs",
+								"wisc",
+								"edu"
+							],
+							"path": [
+								"activities",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetUserSpecificExercise",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"type": "text",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImN0bmVsc29uX3Rlc3QiLCJleHAiOjE2MDQ2MzEzOTh9.UeeW-Q3U5Q1vmkxPqnmak_hHbcgJNWuKPFfZVa7c6VA"
+							}
+						],
+						"url": {
+							"raw": "https://mysqlcs639.cs.wisc.edu/activities/:id",
+							"protocol": "https",
+							"host": [
+								"mysqlcs639",
+								"cs",
+								"wisc",
+								"edu"
+							],
+							"path": [
+								"activities",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "733"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EditUserExercise",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImN0bmVsc29uX3Rlc3QiLCJleHAiOjE2MDQ2MzEzOTh9.UeeW-Q3U5Q1vmkxPqnmak_hHbcgJNWuKPFfZVa7c6VA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Swimming on The Other Lake\",\r\n    \"duration\": 30.0,\r\n    \"calories\": 400.0,\r\n    \"date\": \"2020-11-01T03:04:57.153Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://mysqlcs639.cs.wisc.edu/activities/:id",
+							"protocol": "https",
+							"host": [
+								"mysqlcs639",
+								"cs",
+								"wisc",
+								"edu"
+							],
+							"path": [
+								"activities",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "746"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUserExercise",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"type": "text",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImN0bmVsc29uX3Rlc3QiLCJleHAiOjE2MDQ2MzEzOTh9.UeeW-Q3U5Q1vmkxPqnmak_hHbcgJNWuKPFfZVa7c6VA"
+							}
+						],
+						"url": {
+							"raw": "https://mysqlcs639.cs.wisc.edu/activities/:id",
+							"protocol": "https",
+							"host": [
+								"mysqlcs639",
+								"cs",
+								"wisc",
+								"edu"
+							],
+							"path": [
+								"activities",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "746"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Meals",
+			"item": [
+				{
+					"name": "Meals",
+					"item": [
+						{
+							"name": "GetUserAllMeals",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-access-token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImN0bmVsc29uX3Rlc3QiLCJleHAiOjE2MDQ2MzEzOTh9.UeeW-Q3U5Q1vmkxPqnmak_hHbcgJNWuKPFfZVa7c6VA",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://mysqlcs639.cs.wisc.edu/meals",
+									"protocol": "https",
+									"host": [
+										"mysqlcs639",
+										"cs",
+										"wisc",
+										"edu"
+									],
+									"path": [
+										"meals"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AddUserMeal",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-access-token",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImN0bmVsc29uX3Rlc3QiLCJleHAiOjE2MDQ2MzEzOTh9.UeeW-Q3U5Q1vmkxPqnmak_hHbcgJNWuKPFfZVa7c6VA",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Dinner\",\r\n    \"date\": \"2020-11-01T03:04:57.153Z\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://mysqlcs639.cs.wisc.edu/meals",
+									"protocol": "https",
+									"host": [
+										"mysqlcs639",
+										"cs",
+										"wisc",
+										"edu"
+									],
+									"path": [
+										"meals"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetUserMeal",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-access-token",
+										"type": "text",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImN0bmVsc29uX3Rlc3QiLCJleHAiOjE2MDQ2MzEzOTh9.UeeW-Q3U5Q1vmkxPqnmak_hHbcgJNWuKPFfZVa7c6VA"
+									}
+								],
+								"url": {
+									"raw": "https://mysqlcs639.cs.wisc.edu/meals/:id",
+									"protocol": "https",
+									"host": [
+										"mysqlcs639",
+										"cs",
+										"wisc",
+										"edu"
+									],
+									"path": [
+										"meals",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1714"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "EditUserMeal",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-access-token",
+										"type": "text",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImN0bmVsc29uX3Rlc3QiLCJleHAiOjE2MDQ2MzEzOTh9.UeeW-Q3U5Q1vmkxPqnmak_hHbcgJNWuKPFfZVa7c6VA"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Dinner2\",\r\n    \"date\": \"2020-11-05T03:04:57.153Z\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://mysqlcs639.cs.wisc.edu/meals/:id",
+									"protocol": "https",
+									"host": [
+										"mysqlcs639",
+										"cs",
+										"wisc",
+										"edu"
+									],
+									"path": [
+										"meals",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1714"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteUserMeal",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "x-access-token",
+										"type": "text",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImN0bmVsc29uX3Rlc3QiLCJleHAiOjE2MDQ2MzEzOTh9.UeeW-Q3U5Q1vmkxPqnmak_hHbcgJNWuKPFfZVa7c6VA"
+									}
+								],
+								"url": {
+									"raw": "https://mysqlcs639.cs.wisc.edu/meals/:id",
+									"protocol": "https",
+									"host": [
+										"mysqlcs639",
+										"cs",
+										"wisc",
+										"edu"
+									],
+									"path": [
+										"meals",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1714"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetUserMealAllFoods",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-access-token",
+										"type": "text",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImN0bmVsc29uX3Rlc3QiLCJleHAiOjE2MDQ2MzEzOTh9.UeeW-Q3U5Q1vmkxPqnmak_hHbcgJNWuKPFfZVa7c6VA"
+									}
+								],
+								"url": {
+									"raw": "https://mysqlcs639.cs.wisc.edu/meals/:meal_id/foods",
+									"protocol": "https",
+									"host": [
+										"mysqlcs639",
+										"cs",
+										"wisc",
+										"edu"
+									],
+									"path": [
+										"meals",
+										":meal_id",
+										"foods"
+									],
+									"variable": [
+										{
+											"key": "meal_id",
+											"value": "1715"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AddUserMealFood",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-access-token",
+										"type": "text",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImN0bmVsc29uX3Rlc3QiLCJleHAiOjE2MDQ2MzEzOTh9.UeeW-Q3U5Q1vmkxPqnmak_hHbcgJNWuKPFfZVa7c6VA"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"calories\": 43.0,\r\n    \"carbohydrates\": 0.1,\r\n    \"fat\": 3.3,\r\n    \"measure\": \"slice\",\r\n    \"name\": \"bacon\",\r\n    \"protein\": 3.0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://mysqlcs639.cs.wisc.edu/meals/:meal_id/foods",
+									"protocol": "https",
+									"host": [
+										"mysqlcs639",
+										"cs",
+										"wisc",
+										"edu"
+									],
+									"path": [
+										"meals",
+										":meal_id",
+										"foods"
+									],
+									"variable": [
+										{
+											"key": "meal_id",
+											"value": "1715"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetUserMealFood",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-access-token",
+										"type": "text",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImN0bmVsc29uX3Rlc3QiLCJleHAiOjE2MDQ2MzIzMzh9.z4isjMELgNuRRe2bHYRPtrspAaFCzDxVqa_xGyeKlE0"
+									}
+								],
+								"url": {
+									"raw": "https://mysqlcs639.cs.wisc.edu/meals/:meal_id/foods/:food_id",
+									"protocol": "https",
+									"host": [
+										"mysqlcs639",
+										"cs",
+										"wisc",
+										"edu"
+									],
+									"path": [
+										"meals",
+										":meal_id",
+										"foods",
+										":food_id"
+									],
+									"variable": [
+										{
+											"key": "meal_id",
+											"value": "1715"
+										},
+										{
+											"key": "food_id",
+											"value": "1896"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "EditUserMealFood",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-access-token",
+										"type": "text",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImN0bmVsc29uX3Rlc3QiLCJleHAiOjE2MDQ2MzIzMzh9.z4isjMELgNuRRe2bHYRPtrspAaFCzDxVqa_xGyeKlE0"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"whole wheat bread\",\r\n    \"measure\": \"slice\",\r\n    \"calories\": 69.0,\r\n    \"protein\": 3.6,\r\n    \"carbohydrates\": 12.0,\r\n    \"fat\": 0.9\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://mysqlcs639.cs.wisc.edu/meals/:meal_id/foods/:food_id",
+									"protocol": "https",
+									"host": [
+										"mysqlcs639",
+										"cs",
+										"wisc",
+										"edu"
+									],
+									"path": [
+										"meals",
+										":meal_id",
+										"foods",
+										":food_id"
+									],
+									"variable": [
+										{
+											"key": "meal_id",
+											"value": "1715"
+										},
+										{
+											"key": "food_id",
+											"value": "1896"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteUserMealFood",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "x-access-token",
+										"type": "text",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImN0bmVsc29uX3Rlc3QiLCJleHAiOjE2MDQ2MzIzMzh9.z4isjMELgNuRRe2bHYRPtrspAaFCzDxVqa_xGyeKlE0"
+									}
+								],
+								"url": {
+									"raw": "https://mysqlcs639.cs.wisc.edu/meals/:meal_id/foods/:food_id",
+									"protocol": "https",
+									"host": [
+										"mysqlcs639",
+										"cs",
+										"wisc",
+										"edu"
+									],
+									"path": [
+										"meals",
+										":meal_id",
+										"foods",
+										":food_id"
+									],
+									"variable": [
+										{
+											"key": "meal_id",
+											"value": "1715"
+										},
+										{
+											"key": "food_id",
+											"value": "1896"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Foods",
+					"item": [
+						{
+							"name": "GetAllFoods",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://mysqlcs639.cs.wisc.edu/foods/",
+									"protocol": "https",
+									"host": [
+										"mysqlcs639",
+										"cs",
+										"wisc",
+										"edu"
+									],
+									"path": [
+										"foods",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetSpecificFood",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://mysqlcs639.cs.wisc.edu/foods/:food_id",
+									"protocol": "https",
+									"host": [
+										"mysqlcs639",
+										"cs",
+										"wisc",
+										"edu"
+									],
+									"path": [
+										"foods",
+										":food_id"
+									],
+									"variable": [
+										{
+											"key": "food_id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
