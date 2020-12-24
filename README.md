@@ -12,7 +12,7 @@ A frontend application in React Native that can track your fitness exercises and
 <img src="screenshots/login.PNG" width="300"> | <img src="screenshots/add_exercise.PNG" width="300"> | <img src="screenshots/exercises.PNG" width="300"> | <img src="screenshots/today.PNG" width="300"> | <img src="screenshots/meals.PNG" width="300"> | <img src="screenshots/profile.PNG" width="300">
 
 ### Installation
-Make sure you have [npm](https://docs.npmjs.com/) and [expo CLI](https://docs.expo.io/workflow/expo-cli/) installed. To install all the dependencies for the first time, run `expo install`. Once installed, simply run `expo start` to start the project.
+Make sure you have [npm](https://docs.npmjs.com/) and [expo CLI](https://docs.expo.io/workflow/expo-cli/) installed. To install all the dependencies for the first time, run `expo install`. Once installed, simply run `expo start` to start the project. You can download [Expo Development Client](https://expo.io/tools) on your mobile device to test it out.
 
 <a name="be"></a>
 ### Backend Endpoints
