@@ -17,119 +17,24 @@ Once installed, simply run <pre><code>expo start</code></pre> to start the proje
 
 <a name="be"></a>
 ### Backend Endpoints
-<figure class="md-table-fig">
-<table class="md-table" style="border-style: solid; height: 478px; width: 619px;" border="1">
-<thead>
-<tr class="md-end-block" style="height: 28px;">
-<th style="height: 28px; width: 243px;"><span class="td-span"><span class="md-plain">Route</span></span></th>
-<th style="height: 28px; width: 100px;"><span class="td-span"><span class="md-plain">Auth Required</span></span></th>
-<th style="height: 28px; width: 107px;"><span class="td-span"><span class="md-plain">Token Required</span></span></th>
-<th style="height: 28px; width: 31px;"><span class="td-span"><span class="md-plain">Get</span></span></th>
-<th style="height: 28px; width: 37px;"><span class="td-span"><span class="md-plain">Post</span></span></th>
-<th style="height: 28px; width: 30px;"><span class="td-span"><span class="md-plain">Put</span></span></th>
-<th style="height: 28px; width: 53px;"><span class="td-span"><span class="md-plain">Delete</span></span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="md-end-block" style="height: 30px;">
-<td style="height: 30px; width: 243px;"><span class="td-span"><span class="md-plain">/login/</span></span></td>
-<td style="height: 30px; width: 100px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-<td style="height: 30px; width: 107px;"></td>
-<td style="height: 30px; width: 31px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-<td style="height: 30px; width: 37px;"></td>
-<td style="height: 30px; width: 30px;"></td>
-<td style="height: 30px; width: 53px;"></td>
-</tr>
-<tr class="md-end-block" style="height: 30px;">
-<td style="height: 30px; width: 243px;"><span class="td-span"><span class="md-plain">/users/</span></span></td>
-<td style="height: 30px; width: 100px;"></td>
-<td style="height: 30px; width: 107px;"></td>
-<td style="height: 30px; width: 31px;"></td>
-<td style="height: 30px; width: 37px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-<td style="height: 30px; width: 30px;"></td>
-<td style="height: 30px; width: 53px;"></td>
-</tr>
-<tr class="md-end-block" style="height: 30px;">
-<td style="height: 30px; width: 243px;"><span class="td-span"><span class="md-plain">/users/</span><span class="md-pair-s"><code>&lt;username&gt;</code></span></span></td>
-<td style="height: 30px; width: 100px;"></td>
-<td style="height: 30px; width: 107px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-<td style="height: 30px; width: 31px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-<td style="height: 30px; width: 37px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-<td style="height: 30px; width: 30px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-<td style="height: 30px; width: 53px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-</tr>
-<tr class="md-end-block" style="height: 30px;">
-<td style="height: 30px; width: 243px;"><span class="td-span"><span class="md-plain">/activities/</span></span></td>
-<td style="height: 30px; width: 100px;"></td>
-<td style="height: 30px; width: 107px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-<td style="height: 30px; width: 31px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-<td style="height: 30px; width: 37px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-<td style="height: 30px; width: 30px;"></td>
-<td style="height: 30px; width: 53px;"></td>
-</tr>
-<tr class="md-end-block" style="height: 30px;">
-<td style="height: 30px; width: 243px;"><span class="td-span"><span class="md-plain">/activities/</span><span class="md-pair-s"><code>&lt;activity_id&gt;</code></span></span></td>
-<td style="height: 30px; width: 100px;"></td>
-<td style="height: 30px; width: 107px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-<td style="height: 30px; width: 31px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-<td style="height: 30px; width: 37px;"></td>
-<td style="height: 30px; width: 30px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-<td style="height: 30px; width: 53px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-</tr>
-<tr class="md-end-block" style="height: 30px;">
-<td style="height: 30px; width: 243px;"><span class="td-span"><span class="md-plain">/meals/</span></span></td>
-<td style="height: 30px; width: 100px;"></td>
-<td style="height: 30px; width: 107px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-<td style="height: 30px; width: 31px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-<td style="height: 30px; width: 37px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-<td style="height: 30px; width: 30px;"></td>
-<td style="height: 30px; width: 53px;"></td>
-</tr>
-<tr class="md-end-block" style="height: 30px;">
-<td style="height: 30px; width: 243px;"><span class="td-span"><span class="md-plain">/meals/</span><span class="md-pair-s"><code>&lt;meal_id&gt;</code></span></span></td>
-<td style="height: 30px; width: 100px;"></td>
-<td style="height: 30px; width: 107px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-<td style="height: 30px; width: 31px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-<td style="height: 30px; width: 37px;"></td>
-<td style="height: 30px; width: 30px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-<td style="height: 30px; width: 53px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-</tr>
-<tr class="md-end-block" style="height: 30px;">
-<td style="height: 30px; width: 243px;"><span class="td-span"><span class="md-plain">/meals/</span><span class="md-pair-s"><code>&lt;meal_id&gt;</code></span><span class="md-plain">/foods/</span></span></td>
-<td style="height: 30px; width: 100px;"></td>
-<td style="height: 30px; width: 107px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-<td style="height: 30px; width: 31px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-<td style="height: 30px; width: 37px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-<td style="height: 30px; width: 30px;"></td>
-<td style="height: 30px; width: 53px;"></td>
-</tr>
-<tr class="md-end-block" style="height: 30px;">
-<td style="height: 30px; width: 243px;"><span class="td-span"><span class="md-plain">/meals/</span><span class="md-pair-s"><code>&lt;meal_id&gt;</code></span><span class="md-plain">/foods/</span><span class="md-pair-s"><code>&lt;food_id&gt;</code></span></span></td>
-<td style="height: 30px; width: 100px;"></td>
-<td style="height: 30px; width: 107px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-<td style="height: 30px; width: 31px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-<td style="height: 30px; width: 37px;"></td>
-<td style="height: 30px; width: 30px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-<td style="height: 30px; width: 53px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-</tr>
-<tr class="md-end-block" style="height: 30px;">
-<td style="height: 30px; width: 243px;"><span class="td-span"><span class="md-plain">/foods/</span></span></td>
-<td style="height: 30px; width: 100px;"></td>
-<td style="height: 30px; width: 107px;"></td>
-<td style="height: 30px; width: 31px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-<td style="height: 30px; width: 37px;"></td>
-<td style="height: 30px; width: 30px;"></td>
-<td style="height: 30px; width: 53px;"></td>
-</tr>
-<tr class="md-end-block" style="height: 30px;">
-<td style="height: 30px; width: 243px;"><span class="td-span"><span class="md-plain">/foods/</span><span class="md-pair-s"><code>food_id</code></span></span></td>
-<td style="height: 30px; width: 100px;"></td>
-<td style="height: 30px; width: 107px;"></td>
-<td style="height: 30px; width: 31px;"><span class="td-span"><span class="md-plain">✔︎</span></span></td>
-<td style="height: 30px; width: 37px;"></td>
-<td style="height: 30px; width: 30px;"></td>
-<td style="height: 30px; width: 53px;"></td>
-</tr>
-</tbody>
-</table>
-</figure>
+The following API can be accessed at `https://mysqlcs639.cs.wisc.edu`
+| Endpoint                                       | Auth Required | Token Required | Get | Post | Put | Delete |
+|------------------------------------------------|---------------|----------------|-----|------|-----|--------|
+| /login                                         | ✔︎             |                | ✔︎   |      |     |        |
+| /users                                         |               |                |     | ✔︎    |     |        |
+| /users/`<username>`                            |               | ✔︎              | ✔︎   | ✔︎    | ✔︎   | ✔︎      |
+| /tags                                          |               |                | ✔︎   |      |     |        |
+| /categories                                    |               |                | ✔︎   |      |     |        |
+| /categories/<category_title>/tags              |               |                | ✔︎   |      |     |        |
+| /products                                      |               |                | ✔︎   |      |     |        |
+| /products/`<product_id>`                       |               |                | ✔︎   |      |     |        |
+| /products/`<product_id>`/tags                  |               |                | ✔︎   |      |     |        |
+| /products/`<product_id>`/reviews               |               |                | ✔︎   |      |     |        |
+| /products/`<product_id>`/reviews/`<review_id>` |               |                | ✔︎   |      |     |        |
+| /application                                   |               | ✔︎              | ✔︎   |      | ✔︎   |        |
+| /application/tags                              |               | ✔︎              | ✔︎   |      |     | ✔︎      |
+| /application/tags/`<tag_value>`                |               | ✔︎              |     | ✔︎    |     | ✔︎      |
+| /application/messages                          |               | ✔︎              | ✔︎   | ✔︎    |     | ✔︎      |
+| /application/messages/`<message_id>`           |               | ✔︎              | ✔︎   |      | ✔︎   | ✔︎      |
+| /application/products                          |               | ✔︎              | ✔︎   |      |     | ✔︎      |
+| /application/products/`<product_id>`           |               | ✔︎              |     | ✔︎    |     | ✔︎      |
